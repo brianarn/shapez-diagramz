@@ -4,14 +4,17 @@ function BaseCircle({ size = 100 }) {
     const arcSizeHalf = arcSize / 2;
 
     const backgroundCircle = (
-        <circle fill="black" cx={sizeHalf} cy={sizeHalf} r={sizeHalf} />
+        <circle fill="gray" cx={sizeHalf} cy={sizeHalf} r={sizeHalf} />
     );
 
     const highlightPathDef = `
-        M${sizeHalf} ${arcSize}
+        M ${sizeHalf} ${arcSize}
         A ${arcSizeHalf} ${arcSizeHalf}
-        0 0 0
-        ${arcSize} ${sizeHalf}
+            0 0 0
+            ${arcSize} ${sizeHalf}
+        A ${arcSizeHalf} ${arcSizeHalf}
+            0 0 1
+            ${sizeHalf} ${arcSize}
     `.trim();
     const highlightPath = (
         <path
