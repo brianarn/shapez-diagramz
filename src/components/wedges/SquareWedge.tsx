@@ -27,7 +27,7 @@ function SquareWedge(opts: WedgeOptions) {
             height={sideSize}
             fill={color}
             filter={calcDropShadow(spaceSize, location)}
-            stroke="black"
+            stroke="#222"
             strokeWidth={spaceSize * 2}
             transform={`scale(${scale}) ${transform}`}
         />

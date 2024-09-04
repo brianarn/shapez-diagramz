@@ -1,18 +1,19 @@
 export function calcDropShadow(size: number, location: string) {
+    const scaledSize = size * 2;
     let dropShadow;
 
     switch (location) {
         case "upperLeft":
-            dropShadow = `${size}px 0`;
+            dropShadow = `-${scaledSize}px 0`;
             break;
         case "lowerLeft":
-            dropShadow = `0 ${size}px`;
+            dropShadow = `0 -${scaledSize}px`;
             break;
         case "upperRight":
-            dropShadow = `0 -${size}px`;
+            dropShadow = `0 ${scaledSize}px`;
             break;
         case "lowerRight":
-            dropShadow = `-${size}px 0`;
+            dropShadow = `${scaledSize}px 0`;
             break;
         default:
             throw new Error(
@@ -21,5 +22,5 @@ export function calcDropShadow(size: number, location: string) {
             break;
     }
 
-    return `drop-shadow(${dropShadow} 2px rgba(0, 0, 0, 0.6))`;
+    return `drop-shadow(${dropShadow} 0px rgba(0, 0, 0, 1))`;
 }
