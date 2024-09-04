@@ -9,15 +9,23 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
     const innerScale = 95;
     const innerTranslate = (100 - innerScale) / 2;
 
-    const quarterTransforms = [
-        // Upper Left
-        `rotate(-90 ${halfViewSize} ${halfViewSize})`,
-        // Upper Right
-        `translate(100 0)`,
-        // Lower Right
-        `rotate(90 ${halfViewSize} ${halfViewSize}) translate(100 -100)`,
-        // Lower Left
-        `rotate(180 ${halfViewSize} ${halfViewSize}) translate(0 -100)`,
+    const quarters = [
+        {
+            location: "upperLeft",
+            transform: `rotate(-90 ${halfViewSize} ${halfViewSize})`,
+        },
+        {
+            location: "upperRight",
+            transform: `translate(100 0)`,
+        },
+        {
+            location: "lowerRight",
+            transform: `rotate(90 ${halfViewSize} ${halfViewSize}) translate(100 -100)`,
+        },
+        {
+            location: "lowerLeft",
+            transform: `rotate(180 ${halfViewSize} ${halfViewSize}) translate(0 -100)`,
+        },
     ];
 
     return (
@@ -30,11 +38,18 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
         >
             <BaseCircle size={viewBoxSize} />
             <g
-                transform={`scale(${innerScale / 100}) translate(${innerTranslate} ${innerTranslate})`}
+                transform={`scale(${
+                    innerScale / 100
+                }) translate(${innerTranslate} ${innerTranslate})`}
             >
-                {quarterTransforms.map((transform) => {
+                {quarters.map((quarter) => {
                     return (
-                        <CircleWedge transform={`scale(0.5) ${transform}`} />
+                        <CircleWedge
+                            key={quarter.location}
+                            size={viewBoxSize}
+                            scale={0.5}
+                            {...quarter}
+                        />
                     );
                 })}
             </g>
