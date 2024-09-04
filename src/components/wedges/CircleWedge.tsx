@@ -34,7 +34,7 @@ function CircleWedge(opts: WedgeOptions) {
             d={wedgePathDef}
             fill={color}
             filter={calcDropShadow(spaceSize, location)}
-            stroke="black"
+            stroke="#222"
             strokeLinecap="round"
             strokeWidth={spaceSize * 2}
             transform={`scale(${scale}) ${transform}`}
