@@ -2,7 +2,13 @@ import { calcDropShadow } from "../../utils";
 import { WedgeOptions } from "./wedgeTypes";
 
 function SquareWedge(opts: WedgeOptions) {
-    const { size = 100, location, scale = 0.5, transform } = opts;
+    const {
+        size = 100,
+        location,
+        color = "white",
+        scale = 0.5,
+        transform,
+    } = opts;
     const spaceSize = size * 0.02;
     const sideSize = size - spaceSize * 2;
 
@@ -19,7 +25,7 @@ function SquareWedge(opts: WedgeOptions) {
             rx={spaceSize * 2}
             width={sideSize}
             height={sideSize}
-            fill="white"
+            fill={color}
             filter={calcDropShadow(spaceSize, location)}
             stroke="black"
             strokeWidth={spaceSize * 2}
