@@ -10,22 +10,34 @@ function CircleWedge(opts: WedgeOptions) {
         transform,
     } = opts;
     const spaceSize = size * 0.02;
-    const sideSize = size - spaceSize;
+    const sideSize = size - spaceSize * 2;
 
     const classNames = ["wedge"];
     if (location) {
         classNames.push(`wedge-${location}`);
     }
 
-    const startPt = `${sideSize} ${sideSize}`;
-    const cornerPt = `${spaceSize} ${sideSize}`;
-    const endPt = `${spaceSize} ${spaceSize}`;
+    // const startPt = `${sideSize - spaceSize / 2} ${sideSize}`;
+    // const endPt = `${spaceSize} ${spaceSize}`;
+    // const wedgePathDef = `
+    //     M ${startPt}
+    //     L ${spaceSize} ${sideSize}
+    //     Q ${spaceSize} ${sideSize} ${spaceSize} ${sideSize - spaceSize}
+    //     L ${endPt}
+    //     Q ${spaceSize} ${spaceSize} ${spaceSize} ${spaceSize}
+    //     Q ${(sideSize - spaceSize) * 0.8} ${spaceSize * 0.8} ${sideSize} ${sideSize - spaceSize}
+    //     Q ${sideSize} ${sideSize + spaceSize}
+    //     A ${sideSize} ${sideSize} 0 0 1 ${startPt}
+    //     Z
+    // `.trim();
     const wedgePathDef = `
-        M ${startPt}
-        L ${cornerPt}
-        L ${endPt}
-        A ${sideSize} ${sideSize} 0 0 1 ${startPt}
-        Z
+        M ${spaceSize} ${spaceSize * 2}
+        L ${spaceSize} ${sideSize}
+        Q ${spaceSize} ${sideSize + spaceSize} ${spaceSize * 2} ${sideSize + spaceSize}
+        L ${sideSize} ${sideSize + spaceSize}
+        Q ${sideSize + spaceSize} ${sideSize + spaceSize} ${sideSize + spaceSize} ${sideSize}
+        A ${sideSize } ${sideSize } 0 0 0 ${spaceSize * 2} ${spaceSize}
+        Q ${spaceSize} ${spaceSize} ${spaceSize} ${spaceSize * 2}
     `.trim();
 
     const wedgePath = (

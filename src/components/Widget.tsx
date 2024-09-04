@@ -2,7 +2,7 @@ import "./Widget.scss";
 import BaseCircle from "./BaseCircle";
 import CircleWedge from "./wedges/CircleWedge";
 import SquareWedge from "./wedges/SquareWedge";
-import EmptyWedge from "./wedges/EmptyWedge";
+// import EmptyWedge from "./wedges/EmptyWedge";
 
 function Widget({ size = 100, viewBoxSize = 100 }) {
     const halfViewSize = viewBoxSize / 2;
@@ -14,7 +14,7 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
     const quarters = [
         {
             location: "upperLeft",
-            type: EmptyWedge,
+            type: SquareWedge,
             transform: `rotate(-90 ${halfViewSize} ${halfViewSize})`,
         },
         {
@@ -25,12 +25,13 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
         },
         {
             location: "lowerRight",
-            type: CircleWedge,
+            type: SquareWedge,
+            color: "yellow",
             transform: `rotate(90 ${halfViewSize} ${halfViewSize}) translate(100 -100)`,
         },
         {
             location: "lowerLeft",
-            type: SquareWedge,
+            type: CircleWedge,
             color: "blue",
             transform: `rotate(180 ${halfViewSize} ${halfViewSize}) translate(0 -100)`,
         },
@@ -48,7 +49,7 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
             <g
                 transform={`scale(${
                     innerScale / 100
-                }) translate(${innerTranslate * 1.2} ${innerTranslate})`}
+                }) translate(${innerTranslate * 1.25} ${innerTranslate})`}
             >
                 {quarters.map((quarter) => {
                     const QuarterType = quarter.type;
