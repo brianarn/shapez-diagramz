@@ -14,22 +14,24 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
     const quarters = [
         {
             location: "upperLeft",
-            type: SquareWedge,
+            type: EmptyWedge,
             transform: `rotate(-90 ${halfViewSize} ${halfViewSize})`,
         },
         {
             location: "upperRight",
             type: CircleWedge,
+            color: "red",
             transform: `translate(100 0)`,
         },
         {
             location: "lowerRight",
-            type: SquareWedge,
+            type: CircleWedge,
             transform: `rotate(90 ${halfViewSize} ${halfViewSize}) translate(100 -100)`,
         },
         {
             location: "lowerLeft",
-            type: EmptyWedge,
+            type: SquareWedge,
+            color: "blue",
             transform: `rotate(180 ${halfViewSize} ${halfViewSize}) translate(0 -100)`,
         },
     ];

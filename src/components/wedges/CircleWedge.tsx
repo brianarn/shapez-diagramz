@@ -2,7 +2,13 @@ import { calcDropShadow } from "../../utils";
 import { WedgeOptions } from "./wedgeTypes";
 
 function CircleWedge(opts: WedgeOptions) {
-    const { size = 100, location, scale = 0.5, transform } = opts;
+    const {
+        size = 100,
+        location,
+        color = "white",
+        scale = 0.5,
+        transform,
+    } = opts;
     const spaceSize = size * 0.02;
     const sideSize = size - spaceSize;
 
@@ -26,7 +32,7 @@ function CircleWedge(opts: WedgeOptions) {
         <path
             className={classNames.join(" ")}
             d={wedgePathDef}
-            fill="white"
+            fill={color}
             filter={calcDropShadow(spaceSize, location)}
             stroke="black"
             strokeLinecap="round"

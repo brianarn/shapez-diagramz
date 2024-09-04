@@ -1,6 +1,7 @@
 export interface WedgeOptions {
-    size: number | undefined;
+    size?: number;
     location: string;
+    color?: string;
     scale: number;
-    transform: string | undefined;
+    transform?: string;
 }
