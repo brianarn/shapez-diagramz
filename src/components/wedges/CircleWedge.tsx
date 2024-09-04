@@ -1,22 +1,25 @@
-function CircleWedge({ size = 100, transform }) {
+function CircleWedge({ size = 100, transform = "" }) {
     const sizeEdge = size * 0.02;
     const sizeEdgeDiff = size - sizeEdge;
-    const startPt = `${sizeEdge} ${sizeEdge}`
-    const cornerPt = `${sizeEdge} ${sizeEdgeDiff}`
-    const endPt = `${sizeEdgeDiff} ${sizeEdgeDiff}`
+
+    const startPt = `${sizeEdgeDiff} ${sizeEdgeDiff}`;
+    const cornerPt = `${sizeEdge} ${sizeEdgeDiff}`;
+    const endPt = `${sizeEdge} ${sizeEdge}`;
     const wedgePathDef = `
         M ${startPt}
         L ${cornerPt}
         L ${endPt}
-        A ${sizeEdgeDiff} ${sizeEdgeDiff} 0 0 0 ${startPt}
+        A ${sizeEdgeDiff} ${sizeEdgeDiff} 0 0 1 ${startPt}
         Z
     `;
+
     const wedgePath = (
         <path
             d={wedgePathDef}
             fill="white"
             stroke="black"
-            stroke-width={sizeEdge}
+            strokeLinecap="round"
+            strokeWidth={sizeEdge}
             transform={transform}
         />
     );
