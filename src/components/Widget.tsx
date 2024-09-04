@@ -48,7 +48,7 @@ function Widget({ size = 100, viewBoxSize = 100 }) {
             <g
                 transform={`scale(${
                     innerScale / 100
-                }) translate(${innerTranslate} ${innerTranslate})`}
+                }) translate(${innerTranslate * 1.2} ${innerTranslate})`}
             >
                 {quarters.map((quarter) => {
                     const QuarterType = quarter.type;
